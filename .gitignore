@@ -6,6 +6,7 @@
 **/node_modules/*
 **/.firebaserc
 google-services.json
+android/app/google-services.json
 
 ### Firebase Patch ###
 .runtimeconfig.json
