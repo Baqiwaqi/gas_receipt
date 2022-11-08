@@ -10,7 +10,7 @@ part of 'app_routes_bloc.dart';
 
 // class StateTraingplanRoute extends RoutesState {}
 
-enum RoutesStatus { receiptRoute, workoutRoute, statisticsRoute, settingsRoute }
+enum RoutesStatus { receiptRoute, statisticsRoute, settingsRoute }
 
 class RoutesState extends Equatable {
   const RoutesState._({

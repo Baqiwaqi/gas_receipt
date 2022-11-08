@@ -19,14 +19,11 @@ class RoutesBloc extends Bloc<RoutesEvent, RoutesState> {
         emit(const RoutesState._(status: RoutesStatus.receiptRoute, index: 0));
         break;
       case 1:
-        emit(const RoutesState._(status: RoutesStatus.workoutRoute, index: 1));
+        emit(const RoutesState._(
+            status: RoutesStatus.statisticsRoute, index: 1));
         break;
       case 2:
-        emit(const RoutesState._(
-            status: RoutesStatus.statisticsRoute, index: 2));
-        break;
-      case 3:
-        emit(const RoutesState._(status: RoutesStatus.settingsRoute, index: 3));
+        emit(const RoutesState._(status: RoutesStatus.settingsRoute, index: 2));
         break;
     }
   }

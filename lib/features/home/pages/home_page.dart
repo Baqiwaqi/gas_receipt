@@ -52,11 +52,6 @@ class HomeView extends StatelessWidget {
                   selectedColor: tabbarItemColor,
                 ),
                 SalomonBottomBarItem(
-                  icon: const Icon(Icons.favorite, color: iconColor),
-                  title: const Text("Workout"),
-                  selectedColor: tabbarItemColor,
-                ),
-                SalomonBottomBarItem(
                   icon: const Icon(Icons.bar_chart, color: iconColor),
                   title: const Text("Statistics"),
                   selectedColor: tabbarItemColor,
