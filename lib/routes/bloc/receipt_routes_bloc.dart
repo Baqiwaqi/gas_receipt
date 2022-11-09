@@ -7,7 +7,7 @@ part 'receipt_routes_state.dart';
 class ReceiptRoutesBloc extends Bloc<ReceiptRoutesEvent, ReceiptRoutesState> {
   ReceiptRoutesBloc()
       : super(
-            const ReceiptRoutesState._(status: ReceiptRoutesStatus.overview)) {
+             ReceiptRoutesState._(status: ReceiptRoutesStatus.overview)) {
     on<RoutesChanged>(_onRoutesChanged);
   }
 }
