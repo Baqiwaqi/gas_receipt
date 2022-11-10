@@ -17,7 +17,7 @@ class GasReceipt {
   });
 
   @JsonKey(ignore: true)
-  int? id;
+  String? id;
   DateTime? createdAt;
   DateTime? updatedAt;
   DateTime? gasDate;
@@ -32,8 +32,12 @@ class GasReceipt {
 
   Map<String, dynamic> toJson() => _$GasReceiptToJson(this);
 
+  void setDocId(String docId) {
+    id = docId;
+  }
+
   GasReceipt copyWith({
-    int? id,
+    String? id,
     DateTime? createdAt,
     DateTime? updatedAt,
     DateTime? gasDate,
