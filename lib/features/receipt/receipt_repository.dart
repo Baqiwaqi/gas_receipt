@@ -21,13 +21,14 @@ class ReceiptRepository {
     await receiptCollection.doc(receipt.id).delete();
   }
 
+  Future<List<GasReceipt>> getReceipts() async {
+    final snapshot = await receiptCollection.get();
+    return snapshot.docs.map((doc) => doc.data()).toList();
+  }
+
   Stream<List<GasReceipt>> streamReceipts() {
     return receiptCollection.snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
-        var receipt = doc.data();
-        receipt.setDocId(doc.id);
-        return receipt;
-      }).toList();
+      return snapshot.docs.map((doc) => doc.data()).toList();
     });
   }
 }

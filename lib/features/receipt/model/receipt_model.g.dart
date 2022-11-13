@@ -7,15 +7,9 @@ part of 'receipt_model.dart';
 // **************************************************************************
 
 GasReceipt _$GasReceiptFromJson(Map<String, dynamic> json) => GasReceipt(
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      gasDate: json['gasDate'] == null
-          ? null
-          : DateTime.parse(json['gasDate'] as String),
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      gasDate: json['gasDate'] as String?,
       volume: (json['volume'] as num?)?.toDouble(),
       gasPrice: (json['gasPrice'] as num?)?.toDouble(),
       total: (json['total'] as num?)?.toDouble(),
@@ -25,9 +19,9 @@ GasReceipt _$GasReceiptFromJson(Map<String, dynamic> json) => GasReceipt(
 
 Map<String, dynamic> _$GasReceiptToJson(GasReceipt instance) =>
     <String, dynamic>{
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'gasDate': instance.gasDate?.toIso8601String(),
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'gasDate': instance.gasDate,
       'volume': instance.volume,
       'gasPrice': instance.gasPrice,
       'total': instance.total,

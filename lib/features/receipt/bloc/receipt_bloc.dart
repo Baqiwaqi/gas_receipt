@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gas_receipt/features/receipt/model/receipt_model.dart';
@@ -14,14 +16,14 @@ class ReceiptBloc extends Bloc<ReceiptEvent, ReceiptState> {
     on<CreateReceipt>(_onCreateReceipt);
     on<UpdateReceipt>(_onUpdateReceipt);
     on<DeleteReceipt>(_onDeleteReceipt);
-    on<UpdatedReceiptList>(_onUpdatedReceiptList);
+    on<UpdatedReceipts>(_onUpdatedReceipts);
   }
 
   final ReceiptRepository _receiptRepository;
 
   Future<void> _onLoadReceipts(LoadReceipts event, Emitter<ReceiptState> emit) {
     return emit.onEach<List<GasReceipt>>(_receiptRepository.streamReceipts(),
-        onData: (receipts) => add(UpdatedReceiptList(receipts: receipts)));
+        onData: (receipts) => add(UpdatedReceipts(receipts)));
   }
 
   void _onCreateReceipt(CreateReceipt event, Emitter<ReceiptState> emit) {
@@ -36,8 +38,7 @@ class ReceiptBloc extends Bloc<ReceiptEvent, ReceiptState> {
     _receiptRepository.deleteReceipt(event.receipt);
   }
 
-  void _onUpdatedReceiptList(
-      UpdatedReceiptList event, Emitter<ReceiptState> emit) {
-    emit(ReceiptsLoaded(receipts: event.receipts));
+  void _onUpdatedReceipts(UpdatedReceipts event, Emitter<ReceiptState> emit) {
+    emit(ReceiptsLoaded(event.receipts));
   }
 }

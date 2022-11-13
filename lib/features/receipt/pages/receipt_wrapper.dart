@@ -1,6 +1,6 @@
-import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flow_builder/flow_builder.dart';
 import 'package:gas_receipt/features/receipt/bloc/receipt_bloc.dart';
 import 'package:gas_receipt/features/receipt/receipt_repository.dart';
 import 'package:gas_receipt/routes/bloc/receipt_routes_bloc.dart';
@@ -20,7 +20,7 @@ class ReceiptWrapper extends StatelessWidget {
       BlocProvider<ReceiptBloc>(
         create: (_) => ReceiptBloc(
           receiptRepository: context.read<ReceiptRepository>(),
-        ),
+        )..add(LoadReceipts()),
       ),
     ], child: _ReceiptWrapper());
   }

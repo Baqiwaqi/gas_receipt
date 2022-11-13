@@ -10,8 +10,7 @@ abstract class ReceiptState extends Equatable {
 class ReceiptsLoading extends ReceiptState {}
 
 class ReceiptsLoaded extends ReceiptState {
-  const ReceiptsLoaded({required this.receipts});
-
+  const ReceiptsLoaded([this.receipts = const []]);
   final List<GasReceipt> receipts;
 
   @override

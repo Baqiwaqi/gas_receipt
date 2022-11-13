@@ -18,9 +18,9 @@ class GasReceipt {
 
   @JsonKey(ignore: true)
   String? id;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  DateTime? gasDate;
+  String? createdAt;
+  String? updatedAt;
+  String? gasDate;
   double? volume;
   double? gasPrice;
   double? total;
@@ -38,9 +38,9 @@ class GasReceipt {
 
   GasReceipt copyWith({
     String? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-    DateTime? gasDate,
+    String? createdAt,
+    String? updatedAt,
+    String? gasDate,
     double? volume,
     double? gasPrice,
     double? total,

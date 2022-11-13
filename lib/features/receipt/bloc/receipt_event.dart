@@ -9,9 +9,8 @@ abstract class ReceiptEvent extends Equatable {
 
 class LoadReceipts extends ReceiptEvent {}
 
-class UpdatedReceiptList extends ReceiptEvent {
-  const UpdatedReceiptList({required this.receipts});
-
+class UpdatedReceipts extends ReceiptEvent {
+  const UpdatedReceipts(this.receipts);
   final List<GasReceipt> receipts;
 
   @override
@@ -19,7 +18,7 @@ class UpdatedReceiptList extends ReceiptEvent {
 }
 
 class CreateReceipt extends ReceiptEvent {
-  const CreateReceipt({required this.receipt});
+  const CreateReceipt(this.receipt);
   final GasReceipt receipt;
 
   @override
@@ -27,7 +26,7 @@ class CreateReceipt extends ReceiptEvent {
 }
 
 class UpdateReceipt extends ReceiptEvent {
-  const UpdateReceipt({required this.receipt});
+  const UpdateReceipt(this.receipt);
   final GasReceipt receipt;
 
   @override
@@ -35,7 +34,7 @@ class UpdateReceipt extends ReceiptEvent {
 }
 
 class DeleteReceipt extends ReceiptEvent {
-  const DeleteReceipt({required this.receipt});
+  const DeleteReceipt(this.receipt);
   final GasReceipt receipt;
 
   @override

@@ -55,7 +55,7 @@ class CreateReceiptPage extends StatelessWidget {
                     ),
                     timePickerInitialEntryMode: TimePickerEntryMode.input,
                     inputType: InputType.date,
-                    onChanged: (value) => _receipt.gasDate = value,
+                    onChanged: (value) => _receipt.gasDate = value.toString(),
                   ),
                   const SizedBox(height: 16),
                   FormBuilderTextField(
@@ -120,7 +120,7 @@ class CreateReceiptPage extends StatelessWidget {
                       if (_formKey.currentState!.saveAndValidate()) {
                         context
                             .read<ReceiptBloc>()
-                            .add(CreateReceipt(receipt: _receipt));
+                            .add(CreateReceipt(_receipt));
                       }
                     },
                     child: const Text('Save'),
