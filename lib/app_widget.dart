@@ -6,6 +6,7 @@ import 'package:gas_receipt/config/themes/theme.dart';
 import 'package:gas_receipt/features/authentication/bloc/auth_bloc.dart';
 import 'package:gas_receipt/features/authentication/cubit/auth_screen_cubit.dart';
 import 'package:gas_receipt/features/authentication/repositories/auth_repository.dart';
+import 'package:gas_receipt/features/receipt/receipt_repository.dart';
 import 'package:gas_receipt/routes/auth_routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,6 +24,9 @@ class AppWidget extends StatelessWidget {
       providers: [
         RepositoryProvider.value(
           value: _authenticationRepository,
+        ),
+        RepositoryProvider(
+          create: (_) => ReceiptRepository(),
         ),
       ],
       child: MultiBlocProvider(

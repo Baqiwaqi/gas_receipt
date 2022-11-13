@@ -1,8 +1,8 @@
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gas_receipt/features/receipt/bloc/receipt_bloc.dart';
 import 'package:gas_receipt/features/receipt/model/receipt_model.dart';
 import 'package:gas_receipt/routes/bloc/receipt_routes_bloc.dart';
 
@@ -118,12 +118,9 @@ class CreateReceiptPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.saveAndValidate()) {
-                        print(
-                            'Form is valid. Values: ${_formKey.currentState!.value}');
-                        // context.read<ReceiptRoutesBloc>().add(
-                        //       const RoutesChanged(
-                        //           status: ReceiptRoutesStatus.overview),
-                        //     );
+                        context
+                            .read<ReceiptBloc>()
+                            .add(CreateReceipt(receipt: _receipt));
                       }
                     },
                     child: const Text('Save'),
