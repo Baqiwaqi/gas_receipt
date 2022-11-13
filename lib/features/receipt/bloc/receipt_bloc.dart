@@ -10,9 +10,11 @@ class ReceiptBloc extends Bloc<ReceiptEvent, ReceiptState> {
   ReceiptBloc({required ReceiptRepository receiptRepository})
       : _receiptRepository = receiptRepository,
         super(ReceiptsLoading()) {
-    on<ReceiptEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<LoadReceipts>(_onLoadReceipts);
+    on<CreateReceipt>(_onCreateReceipt);
+    on<UpdateReceipt>(_onUpdateReceipt);
+    on<DeleteReceipt>(_onDeleteReceipt);
+    on<UpdatedReceiptList>(_onUpdatedReceiptList);
   }
 
   final ReceiptRepository _receiptRepository;
@@ -20,5 +22,22 @@ class ReceiptBloc extends Bloc<ReceiptEvent, ReceiptState> {
   Future<void> _onLoadReceipts(LoadReceipts event, Emitter<ReceiptState> emit) {
     return emit.onEach<List<GasReceipt>>(_receiptRepository.streamReceipts(),
         onData: (receipts) => add(UpdatedReceiptList(receipts: receipts)));
+  }
+
+  void _onCreateReceipt(CreateReceipt event, Emitter<ReceiptState> emit) {
+    _receiptRepository.createReceipt(event.receipt);
+  }
+
+  void _onUpdateReceipt(UpdateReceipt event, Emitter<ReceiptState> emit) {
+    _receiptRepository.updateReceipt(event.receipt);
+  }
+
+  void _onDeleteReceipt(DeleteReceipt event, Emitter<ReceiptState> emit) {
+    _receiptRepository.deleteReceipt(event.receipt);
+  }
+
+  void _onUpdatedReceiptList(
+      UpdatedReceiptList event, Emitter<ReceiptState> emit) {
+    emit(ReceiptsLoaded(receipts: event.receipts));
   }
 }
